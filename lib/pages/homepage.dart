@@ -1,73 +1,5 @@
-// import 'package:flutter/material.dart';
-// import 'package:google_nav_bar/google_nav_bar.dart';
-// import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-// class Homepage extends StatefulWidget {
-//   const Homepage({super.key});
-
-//   @override
-//   State<Homepage> createState() => _HomepageState();
-// }
-
-// class _HomepageState extends State<Homepage> {
-//   final PageController _controller = PageController();
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Stack(
-//         children: [
-//           PageView(
-//             onPageChanged: (index) => {
-//               setState(() {
-//                 _controller.jumpToPage(index);
-//               })
-//             },
-//           )
-//         ],
-        
-//       ),
-    
-//       bottomNavigationBar: Container(
-//         color: Colors.black,
-//         child: Padding(
-//           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
-//           child: GNav(
-//               backgroundColor: Colors.black,
-//               color: Colors.white,
-//               activeColor: Colors.white,
-//               tabBackgroundColor: Colors.grey.shade800,
-//               padding: EdgeInsets.all(16),
-//               gap: 8,
-//               tabs: const [
-//                 GButton(
-//                   icon: Icons.home,
-//                   text: "Home",
-//                 ),
-//                 GButton(
-//                   icon: Icons.favorite_border,
-//                   text: "Likes",
-//                 ),
-//                 GButton(
-//                   icon: Icons.search,
-//                   text: "Search",
-//                 ),
-//                 GButton(
-//                   icon: Icons.settings,
-//                   text: "Settings",
-//                 ),
-//               ]),
-//         ),
-//       ),
-//       SmoothPageIndicator(
-//         controller: _controller,
-//         count: 4,
-//       ),
-//     );
-//   }
-// }
-
-
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/views/Custom_view.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -131,22 +63,30 @@ class _HomepageState extends State<Homepage> {
               color: Colors.white,
               activeColor: Colors.white,
               tabBackgroundColor: Colors.grey.shade800,
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               gap: 8,
-              tabs: const [
-                GButton(
+              tabs: [
+                const GButton(
                   icon: Icons.home,
                   text: "Home",
                 ),
                 GButton(
                   icon: Icons.favorite_border,
                   text: "Likes",
+                  onPressed: () {
+                    setState(() {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CustomView()));
+                    });
+                  },
                 ),
-                GButton(
+                const GButton(
                   icon: Icons.search,
                   text: "Search",
                 ),
-                GButton(
+                const GButton(
                   icon: Icons.settings,
                   text: "Settings",
                 ),
